@@ -63,6 +63,17 @@ setTimeout(function(){
             scene.updateMatrixWorld(true);
             console.timeEnd("reinit");
         } 
+        for ( var j = 0; j < 10; j ++ ) {
+            var scene = new THREE.Scene();
+            for ( var i = 0; i < 50000; i ++ ) {
+                var mesh = new THREE.Object3D( );
+                scene.add( mesh );
+            }
+            
+            console.time("reinit without moving");
+            scene.updateMatrixWorld(true);
+            console.timeEnd("reinit without moving");
+        } 
 },5000);
     </script>
 </body>    
