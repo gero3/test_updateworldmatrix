@@ -5,56 +5,66 @@
 </head>
 <body>
     <script>
-var scene = new THREE.Scene();
-for ( var i = 0; i < 50000; i ++ ) {
-    var mesh = new THREE.Object3D( );
-    mesh.position.x = Math.random() * 8000 - 4000;
-    mesh.position.y = Math.random() * 8000 - 4000;
-    mesh.position.z = Math.random() * 8000 - 4000;
-    mesh.rotation.x = Math.random() * 2 * Math.PI;
-    mesh.rotation.y = Math.random() * 2 * Math.PI;
-    mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
-    scene.add( mesh );
-}
-console.time("init");
-scene.updateMatrixWorld();
-console.timeEnd("init");
-for ( var i = 0; i < 5; i ++ ) {
-    console.time("not moved");
-    scene.updateMatrixWorld();
-    console.timeEnd("not moved");
-}
 
-for ( var j = 0; j < 5; j ++ ) {
+
+setTimeout(function(){
+    var scene = new THREE.Scene();
     for ( var i = 0; i < 50000; i ++ ) {
-        var mesh = scene.children[i];
+        var mesh = new THREE.Object3D( );
         mesh.position.x = Math.random() * 8000 - 4000;
         mesh.position.y = Math.random() * 8000 - 4000;
         mesh.position.z = Math.random() * 8000 - 4000;
         mesh.rotation.x = Math.random() * 2 * Math.PI;
         mesh.rotation.y = Math.random() * 2 * Math.PI;
         mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
+        scene.add( mesh );
     }
-    console.time("all moved");
-    scene.updateMatrixWorld();
-    console.timeEnd("all moved");
-}
-
-var scene = new THREE.Scene();
-for ( var i = 0; i < 50000; i ++ ) {
-    var mesh = new THREE.Object3D( );
-    mesh.position.x = Math.random() * 8000 - 4000;
-    mesh.position.y = Math.random() * 8000 - 4000;
-    mesh.position.z = Math.random() * 8000 - 4000;
-    mesh.rotation.x = Math.random() * 2 * Math.PI;
-    mesh.rotation.y = Math.random() * 2 * Math.PI;
-    mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
-    scene.add( mesh );
-}
-console.time("reinit");
-scene.updateMatrixWorld(true);
-console.timeEnd("reinit");
+    
+        console.time("init");
+        scene.updateMatrixWorld();
+        console.timeEnd("init");
         
+        
+           
+        for ( var i = 0; i < 10; i ++ ) {
+            console.time("not moved");
+            scene.updateMatrixWorld();
+            console.timeEnd("not moved");
+        }
+        
+        for ( var j = 0; j < 10; j ++ ) {
+            for ( var i = 0; i < 50000; i ++ ) {
+                var mesh = scene.children[i];
+                mesh.position.x = Math.random() * 8000 - 4000;
+                mesh.position.y = Math.random() * 8000 - 4000;
+                mesh.position.z = Math.random() * 8000 - 4000;
+                mesh.rotation.x = Math.random() * 2 * Math.PI;
+                mesh.rotation.y = Math.random() * 2 * Math.PI;
+                mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
+            }
+            console.time("all moved");
+            scene.updateMatrixWorld();
+            console.timeEnd("all moved");
+        }
+        
+        for ( var j = 0; j < 10; j ++ ) {
+            var scene = new THREE.Scene();
+            for ( var i = 0; i < 50000; i ++ ) {
+                var mesh = new THREE.Object3D( );
+                mesh.position.x = Math.random() * 8000 - 4000;
+                mesh.position.y = Math.random() * 8000 - 4000;
+                mesh.position.z = Math.random() * 8000 - 4000;
+                mesh.rotation.x = Math.random() * 2 * Math.PI;
+                mesh.rotation.y = Math.random() * 2 * Math.PI;
+                mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
+                scene.add( mesh );
+            }
+            
+            console.time("reinit");
+            scene.updateMatrixWorld(true);
+            console.timeEnd("reinit");
+        } 
+},5000);
     </script>
 </body>    
 </html>
