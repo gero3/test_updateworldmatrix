@@ -75,6 +75,31 @@ setTimeout(function(){
             scene.updateMatrixWorld(true);
             console.timeEnd("reinit without moving");
         } 
+        
+        var scene = new THREE.Scene();
+        
+        var parent = scene;
+        for ( var i = 0; i < 50; i ++ ) {
+            var object3D = new THREE.Object3D( );
+            parent.add( object3D );
+            parent = object3D;
+        };
+        for ( var i = 0; i < 50000; i ++ ) {
+            var mesh = new THREE.Object3D( );
+            object3D.add( mesh );
+        }
+        for ( var j = 0; j < 10; j ++ ) {
+            object3D.position.x = Math.random() * 8000 - 4000;
+            object3D.position.y = Math.random() * 8000 - 4000;
+            object3D.position.z = Math.random() * 8000 - 4000;
+            object3D.rotation.x = Math.random() * 2 * Math.PI;
+            object3D.rotation.y = Math.random() * 2 * Math.PI;
+            object3D.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
+            
+            console.time("parentchanged");
+            scene.updateMatrixWorld(true);
+            console.timeEnd("parentchanged");
+        } 
 },5000);
     </script>
 </body>    
