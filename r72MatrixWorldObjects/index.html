@@ -22,14 +22,14 @@ setTimeout(function(){
     }
     
         console.time("init");
-        scene.updateMatrixWorld();
+        scene.updateMatrixWorld( true );
         console.timeEnd("init");
         
         
            
         for ( var i = 0; i < 10; i ++ ) {
             console.time("not moved");
-            scene.updateMatrixWorld();
+            scene.updateMatrixWorld( true );
             console.timeEnd("not moved");
         }
         
@@ -44,7 +44,7 @@ setTimeout(function(){
                 mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
             }
             console.time("all moved");
-            scene.updateMatrixWorld();
+            scene.updateMatrixWorld( true );
             console.timeEnd("all moved");
         }
         
@@ -62,7 +62,7 @@ setTimeout(function(){
             }
             
             console.time("reinit");
-            scene.updateMatrixWorld(true);
+            scene.updateMatrixWorld( true );
             console.timeEnd("reinit");
         } 
         for ( var j = 0; j < 10; j ++ ) {
@@ -73,7 +73,7 @@ setTimeout(function(){
             }
             
             console.time("reinit without moving");
-            scene.updateMatrixWorld(true);
+            scene.updateMatrixWorld( true );
             console.timeEnd("reinit without moving");
         } 
         
@@ -98,7 +98,7 @@ setTimeout(function(){
             object3D.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50 + 100;
             
             console.time("parentchanged");
-            scene.updateMatrixWorld(true);
+            scene.updateMatrixWorld( true );
             console.timeEnd("parentchanged");
         } 
 },5000);
